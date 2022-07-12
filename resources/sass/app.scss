@@ -1,1 +1,9 @@
 //
+@import "~bootstrap/scss/bootstrap";
+
+body {
+    background-color: goldenrod;
+    background-image: url('/images/fondo-pag-speciali.jpg');
+}
+
+@import 'partials/_navbar';

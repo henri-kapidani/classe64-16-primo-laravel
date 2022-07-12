@@ -13,6 +13,46 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+$arr = [
+    [
+        'route'     => 'home',
+        'menuName'  => 'Home'
+    ],
+    [
+        'route'     => 'products',
+        'menuName'  => 'Products'
+    ],
+    [
+        'route'     => 'about',
+        'menuName'  => 'About Us'
+    ],
+    [
+        'route'     => 'saluti',
+        'menuName'  => 'Pagina di saluti'
+    ],
+];
+
+Route::get('/', function () use ($arr) {
+    return view('home', [
+        'pageTitle' => 'Homepage',
+        'arr'       => $arr
+    ]);
+})->name('home');
+
+Route::get('/about-us', function () {
+    return view('frontoffice.about', [
+        'pageTitle' => 'about from view',
+        'hTitle'    => 'This is our about us page'
+    ]);
+})->name('about');
+
+Route::get('/products', function () {
+    return view('frontoffice.products');
+})->name('products');
+
+Route::get('/salulti', function () use ($arr) {
+    return view('frontoffice.saluti', [
+        'pageTitle' => 'Saluti page',
+        'arr'       => $arr
+    ]);
+})->name('saluti');
